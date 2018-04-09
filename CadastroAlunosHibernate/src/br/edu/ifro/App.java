@@ -5,11 +5,15 @@
  */
 package br.edu.ifro;
 
+import br.edu.ifro.modelo.aluno;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -19,12 +23,23 @@ public class App extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("TelaPrincipal.fxml"));
+     //exemplo
+        aluno alun = new aluno();
+        alun.setNome("Teste");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("aula");
+        EntityManager em = emf.createEntityManager();
         
-        Scene scene = new Scene(root);
+        em.getTransaction().begin();
+        em.persist(alun);
+        em.getTransaction().commit();
+     //exemplo
         
-        stage.setScene(scene);
-        stage.show();
+     /* Parent root = FXMLLoader.load(getClass().getResource("TelaPrincipal.fxml"));
+     
+     Scene scene = new Scene(root);
+     
+     stage.setScene(scene);
+     stage.show();*/
     }
 
     /**

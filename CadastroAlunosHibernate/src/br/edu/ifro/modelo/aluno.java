@@ -16,11 +16,12 @@ import javax.persistence.Id;
  */
 @Entity
 public class aluno {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
-  private Integer idade;
-  private String nome;
+    private Integer id;
+    private Integer idade;
+    private String nome;
 
     public Integer getId() {
         return id;
@@ -45,5 +46,5 @@ public class aluno {
     public void setNome(String nome) {
         this.nome = nome;
     }
-  
+
 }
